@@ -25,3 +25,6 @@ jobs:
           else
             echo "No version number found in commit message."
           fi
+          echo "Full ref: ${{ github.ref }}"
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          echo "Tag name: $TAG_NAME"
