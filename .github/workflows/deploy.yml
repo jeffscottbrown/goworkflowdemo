@@ -25,6 +25,7 @@ jobs:
           else
             echo "No version number found in commit message."
           fi
-          echo "Full ref: ${{ github.ref }}"
-          TAG_NAME=${GITHUB_REF#refs/tags/}
-          echo "Tag name: $TAG_NAME"
+          TAG_NAME="${{ github.event.ref }}"
+          echo "Raw event ref: $TAG_NAME"
+          CLEAN_TAG="${TAG_NAME#refs/tags/}"
+          echo "Clean tag: $CLEAN_TAG"
