@@ -7,5 +7,5 @@ func main() {
 }
 
 func getMessage() string {
-	return "Hello, World!"
+	return "Cause Test To Fail"
 }
