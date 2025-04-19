@@ -25,6 +25,16 @@ jobs:
           else
             echo "No version number found in commit message."
           fi
+          TAG_NAME="${{ github.event.ref }}"
+          echo "Raw event ref: $TAG_NAME"
+          CLEAN_TAG="${TAG_NAME#refs/tags/}"
+          echo "Clean tag: $CLEAN_TAG"
+          
+          echo "ref from context: ${{ github.ref }}"
+          TAG_NAME="${{ github.ref }}" # will be 'refs/tags/v1.2.3'
+          CLEAN_TAG="${TAG_NAME#refs/tags/}"
+          echo "Tag: $CLEAN_TAG"
+
           TAG_NAME=$(git tag --points-at HEAD)
           echo "Detected tag: $TAG_NAME"
           echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
